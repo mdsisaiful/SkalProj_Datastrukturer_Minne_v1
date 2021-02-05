@@ -1,0 +1,125 @@
+﻿                C# Övningssamling 4 - Minneshantering
+                .....................................
+
+
+Frågorna av Teori och fakta
+---------------------------
+
+1.	Hur fungerar stacken och heapen? Förklara gärna med exempel eller skiss på dess grundläggande funktion?
+
+		Ett objekt kan lagras antingen i heapen eller i stacken. Objekt som lagrar på stacken är endast 
+		tillgängliga inuti en stack (dvs. som kallas lokal variabel), medan objekt som lagrar på heapen 
+		kan nås var som helst (dvs. som kallas global variabel). Ta en titt på följande exempel för att 
+		förstå hur stacken och heapen fungerar:
+
+		För Heapen:
+        ----------
+
+        int apple = 5; // Här, variabel apple lagrar på heapen (utanför metoden)
+
+        public void Sum()
+        {
+            Console.WriteLine(apple); // Visar output 5 utan problem
+        }
+
+        public void Sum1()
+        {
+            Console.WriteLine(apple); // visar output 5 utan problem
+        }
+
+        För Stacken:
+        ------------
+
+        public void Sum()
+        {
+            int apple = 5; // Här, variabel apple lagrar på Stacken (inuti denna metod)
+            Console.WriteLine(apple); // Visar output 5 utan problem
+        }
+
+        public void Sum1()
+        {
+            Console.WriteLine(apple); // Värde för variabelt äpple nås aldrig här eftersom 
+                                     //  värdet deklareras i en annan stack.
+        }
+
+
+2.	Vad är Value Types respektive Reference Types och vad skiljer dem åt?
+        
+        Värdetyper är något som en variabel inte har en minnesadress (memory address) eller 
+        en pekare (pointer) i stället variabel har ett värde som lagrar själva i minnet. 
+        Den primitiva datatypen som int, float, double är värdetyper i .NET. Till exempel,
+
+        int apple = 5; // Här, variabelt apple behåller ett värde eftersom apple typ är som 
+                      //  ett heltal och heltal är en värdetyp.
+
+        Å andra sidan är referenstyper något som variabler håller en referens eller en pekare 
+        till ett objekt. I .NET är alla klasser referenstyp och flera variabler kan referera 
+        till samma objekt. Till exempel, 
+
+        Apple a = new Apple("Name"); // Här, variabelt a behåller en referens eftersom a typ 
+                                    // är en Apple som är en klass och klass är en referens typ.
+
+
+3.	Följande metoder ( se bild nedan ) genererar olika svar. Den första returnerar 3, den andra returnerar 4, varför?
+
+        Den första metoden returnerar 3 därför att c # alltid använder "pass by value" när vi 
+        åberopar en metod. Här, x = 3, kopieras värdet 3 från x-variabeln till denna y-variabel. 
+        Även om, y = 4, kommer det aldrig att påverka värdet på x som är 3. Det är därför det 
+        returnerar 3.
+        Å andra sidan i den andra metoden, både x.MyValue och y.MyValue hänvisar till samma objekt. 
+        Vi kommer att ha samma pekarenummer. Det är därför det returnerar 4.
+
+
+
+Övning 1: ExamineList()
+-----------------------
+
+1.	När ökar listans kapacitet? (Alltså den underliggande arrayens storlek)?
+
+        Kapaciteten ökar efter behov.
+
+2.	Med hur mycket ökar kapaciteten?
+
+        Dubbel.
+
+3.	Varför ökar inte listans kapacitet i samma takt som element läggs till?
+
+        Det är mycket dyrt att lägga till nya element. Listan har flexibiliteten att växa sin Array 
+        exponentiellt. Dessutom hänvisar kapacitet bara till de objekt som listan kan lagra. 
+        Det hänvisar inte till objekten i listan. Det är därför ökar det inte listans kapacitet 
+        i samma takt som element läggs till.
+
+
+4.	Minskar kapaciteten när element tas bort ur listan?
+
+        Nej.
+
+
+5.	När är det då fördelaktigt att använda en egendefinierad array istället för en lista?
+
+        När vi vet hur många data/element vi behöver lagra i Array.
+
+
+
+Övning 2: ExamineQueue()
+------------------------
+
+Kö är en samling objekt som fungerar enligt principen för FIFO (First In First Out). Det betyder 
+att (till exempel här) vi ställer in Kalle, Greta och Stina i kön och vi kan inte ta bort Greta 
+eller Stina från kön förrän Kalle tar bort.
+
+
+Övning 3: ExamineStack()
+------------------------
+
+Stack är som en flaska och den har stängt botten. Det är också en samling objekt som fungerar på 
+principen om LIFO (Last In First Out). Det betyder att (till exempel här) vi inte kan ta bort Kalle 
+förrän vi först tar bort Stina och sedan slutligen kan vi ta bort Kalle.
+
+
+
+
+
+        
+
+
