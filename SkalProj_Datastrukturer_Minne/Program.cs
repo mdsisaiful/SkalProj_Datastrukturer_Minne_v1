@@ -20,6 +20,7 @@ namespace SkalProj_Datastrukturer_Minne
                     + "\n2. Examine a Queue"
                     + "\n3. Examine a Stack"
                     + "\n4. CheckParanthesis"
+                    + "\n5. ReverseText"
                     + "\n0. Exit the application");
                 char input = ' '; //Creates the character input to be used with the switch-case below.
                 try
@@ -45,7 +46,11 @@ namespace SkalProj_Datastrukturer_Minne
                     case '4':
                         CheckParanthesis();
                         break;
-                    
+                    case '5':
+                        ReverseText();
+                        break;
+
+
                     /*
                      * Extend the menu to include the recursive 
                      * and iterative exercises.
@@ -60,8 +65,29 @@ namespace SkalProj_Datastrukturer_Minne
             }
         }
 
+        static void ReverseText()
+        {
+            Stack<char> theStack = new Stack<char>();
+            Console.WriteLine("Please write some words or sentence: ");
+            string userInput = Console.ReadLine();
+            
+            char[] charInput = userInput.ToCharArray(); // lagra teckenföljden i array
 
-       
+            for (int i = 0; i < userInput.Length; i++)
+            {
+                theStack.Push(charInput[i]);
+            }
+
+            Console.WriteLine("\nReverses the order of the text characters: ");
+            while (theStack.Count > 0)
+                Console.Write(theStack.Pop());
+            Console.WriteLine("\n\n");
+            
+            
+        }
+
+
+
 
         /// <summary>
         /// Examines the datastructure List
